@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HelpDesk · IT Ticket Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand"><span class="logo">🎧</span><div><h1>HelpDesk</h1><p>IT Ticket Management System</p></div></div>
+      <button class="btn" onclick="openModal()">+ New Ticket</button>
+    </header>
+
+    <section class="stats" id="stats"></section>
+
+    <section class="toolbar">
+      <input id="search" placeholder="Search tickets, people, keywords..." oninput="render()">
+      <div class="chips" id="chips"></div>
+    </section>
+
+    <section class="grid" id="list"></section>
+  </div>
+
+  <div class="overlay" id="modal" onclick="if(event.target===this)closeModal()">
+    <div class="modal">
+      <h2>Create Ticket</h2>
+      <label>Title</label><input id="f-title" placeholder="e.g. Laptop not booting">
+      <label>Description</label><textarea id="f-desc" rows="3" placeholder="Describe the issue..."></textarea>
+      <label>Requester</label><input id="f-req" placeholder="Your name">
+      <div class="row">
+        <div><label>Type</label><select id="f-type"><option>Incident</option><option>Request</option></select></div>
+        <div><label>Priority</label><select id="f-pri"><option>LOW</option><option selected>MEDIUM</option><option>HIGH</option><option>CRITICAL</option></select></div>
+      </div>
+      <div class="actions"><button class="btn ghost" onclick="closeModal()">Cancel</button><button class="btn" onclick="createTicket()">Submit</button></div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
